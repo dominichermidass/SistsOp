@@ -28,8 +28,11 @@ public class SimpleChatClient
         qScroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         outgoing = new JTextField(20);
         JButton sendButton = new JButton("Send");
+        JButton sendButton2 = new JButton("Borrar");
+    	sendButton2.addActionListener(new SendButtonListener2());
         sendButton.addActionListener(new SendButtonListener());
         mainPanel.add(qScroller);
+        mainPanel.add(sendButton2);
         mainPanel.add(outgoing);
         mainPanel.add(sendButton);
         frame.getContentPane().add(BorderLayout.CENTER, mainPanel);
@@ -79,6 +82,21 @@ public class SimpleChatClient
         new SimpleChatClient().go();
     }
 
+      public class SendButtonListener2 implements ActionListener
+    {
+        public void actionPerformed(ActionEvent ev) {
+            try {
+               incoming.setText(null);
+            }
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
+           
+            
+        }
+
+	
+    }
     class IncomingReader implements Runnable
     {
         public void run()
